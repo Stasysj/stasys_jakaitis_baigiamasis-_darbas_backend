@@ -29,3 +29,26 @@ Content-Type: application/json
     "password": "123456"
     
   }
+###---------------------------------------GET questions
+GET http://localhost:3000/api/questions 
+
+###--------------------------------------POST question
+POST http://localhost:3000/api/questions 
+Content-Type: application/json 
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NTg4NjczNTMsImV4cCI6MTY1ODg3MDk1M30.wEfaDfxnwk2G0OKYt4kZ61glV0srYJg4D5HhePoSn-M
+
+{
+"title_q": "Medzioklinis suo", 
+"body_q": "Koki suni pirkti?",
+"user_id": 2
+}
+
+###-----------------------------------
+
+PATCH http://localhost:3000/api/questions/3
+Content-Type: application/json 
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NTg4NjczNTMsImV4cCI6MTY1ODg3MDk1M30.wEfaDfxnwk2G0OKYt4kZ61glV0srYJg4D5HhePoSn-M
+
+{
+"body_q": "Kokio suns nepirkti!!!!!"
+}

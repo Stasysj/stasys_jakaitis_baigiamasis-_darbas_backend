@@ -34,7 +34,6 @@ function findUserByEmail(email) {
 // ------------------
 
 module.exports = {
-  executeDb,
   getAllUsersDB,
   registerUserDB,
   findUserByEmail,
