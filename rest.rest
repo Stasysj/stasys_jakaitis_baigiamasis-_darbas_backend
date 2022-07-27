@@ -1,6 +1,6 @@
 
 
-
+####--------------------------------------------USERS-------------
 ###-----------------------------/get user
 GET http://localhost:3000/api/users
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImlhdCI6MTY1ODg0MjkzMSwiZXhwIjoxNjU4ODQ2NTMxfQ.id4xQfkHWIC7S0z3yw1h7imA9hOdsvs4ID0JoYE0RUg
@@ -29,7 +29,8 @@ Content-Type: application/json
     "password": "123456"
     
   }
-###---------------------------------------GET questions
+###-------------------------------------------------------------QUESTION--------------
+###---------------------------------------GET ALL questions
 GET http://localhost:3000/api/questions 
 
 ###--------------------------------------POST question
@@ -43,7 +44,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NTg4NjczN
 "user_id": 2
 }
 
-###-----------------------------------
+###-----------------------------------UPDATE
 
 PATCH http://localhost:3000/api/questions/3
 Content-Type: application/json 
@@ -51,4 +52,26 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NTg4NjczN
 
 {
 "body_q": "Kokio suns nepirkti!!!!!"
+}
+
+###-----------------------------------DELETE
+
+PATCH http://localhost:3000/api/questions/d/3
+Content-Type: application/json 
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NTg4NzEzNzksImV4cCI6MTY1ODg3NDk3OX0.TRh_2k2jRG5Uf-v3N7CRFd_AMZHKBDN0Hy0UhK4ZPKE
+
+###----------------------------------------ANSWERS----------
+###----------------------------Get answers by question ID
+GET http://localhost:3000/api/questions/1/answers
+
+###---------------------------Post answers by question ID
+
+POST http://localhost:3000/api/questions/1/answers
+Content-Type: application/json 
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NTg5MDE5MDcsImV4cCI6MTY1ODkwNTUwN30.AYanxQXy7J2pj1VvpX2HrUK9goDFVG5hvOO6rtqc1bc
+
+{
+
+"body_a": "Pirk maza suni!",
+"user_id": 2
 }

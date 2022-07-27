@@ -16,27 +16,27 @@ async function executeDb(sql, dataToDbArr) {
   }
 }
 
-function getQuestionsDb() {
-  const sql = 'SELECT * FROM questions WHERE questions.archived_q = 0';
+function getAnswersDb(id_q) {
+  const sql = `SELECT * FROM answers WHERE answers.archived_a = 0 AND answers.id_q = ${id_q}`;
   return executeDb(sql, []);
 }
 
-function postQuestionDb(title_q, body_q, user_id) {
-  const sql = 'INSERT INTO questions (title_q, body_q, user_id) VALUES (?,?,?)';
-  return executeDb(sql, [title_q, body_q, user_id]);
+function postAnswersDb(id_q, body_a, user_id) {
+  const sql = 'INSERT INTO answers (id_q, body_a, user_id) VALUES (?,?,?)';
+  return executeDb(sql, [id_q, body_a, user_id]);
 }
 
-function editQuestionDb(body_q, id_q) {
+function editAnswersDb(body_q, id_q) {
   const sql = `UPDATE questions SET body_q = (?) WHERE questions.id_q = ${id_q}`;
   return executeDb(sql, [body_q]);
 }
-function deleteQuestionDb(id_q) {
-  const sql = `UPDATE questions SET archived_q = 1 WHERE questions.id_q = ${id_q}`;
-  return executeDb(sql, []);
-}
+// function deleteAnswersDb(id_q) {
+//   const sql = `UPDATE questions SET archived_q = 1 WHERE questions.id_q = ${id_q}`;
+//   return executeDb(sql, []);
+// }
 module.exports = {
-  getQuestionsDb,
-  postQuestionDb,
-  editQuestionDb,
-  deleteQuestionDb,
+  getAnswersDb,
+  postAnswersDb,
+  editAnswersDb,
+  //   deleteAnswersDb,
 };

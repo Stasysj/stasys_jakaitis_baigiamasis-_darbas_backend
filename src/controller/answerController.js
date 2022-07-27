@@ -1,45 +1,48 @@
 const {
-  getQuestionsDb,
-  postQuestionDb,
-  editQuestionDb,
-  deleteQuestionDb,
-} = require('../model/questionsModel');
+  getAnswersDb,
+  postAnswersDb,
+  editAnswersDb,
+  deleteAnswersDb,
+} = require('../model/answerModel');
 
 // ------------------------------------------
-async function getQuestions(req, res) {
+async function getAnswers(req, res) {
   try {
-    const questArr = await getQuestionsDb();
+    const { id_q } = req.params;
+
+    const questArr = await getAnswersDb(id_q);
     res.json(questArr);
   } catch (error) {
-    console.log('error in getting Question route ===', error);
+    console.log('error in getting Answers route ===', error);
     res.sendStatus(500);
   }
 }
 
-async function postQuestion(req, res) {
-  const { title_q, body_q, user_id } = req.body;
-
+async function postAnswers(req, res) {
+  const { user_id, body_a } = req.body;
+  const { id_q } = req.params;
+  console.log('id_q, body_a, user_id', id_q, body_a, user_id);
   try {
-    const saveResult = await postQuestionDb(title_q, body_q, user_id);
+    const saveResult = await postAnswersDb(id_q, body_a, user_id);
     if (saveResult.affectedRows === 1) {
-      res.status(201).json('Question successfully added');
+      res.status(201).json('Answer successfully added');
       return;
     }
-    res.status(400).json('Error in adding new Question ');
+    res.status(400).json('Error in adding new Answer ');
   } catch (error) {
-    console.log('POST /Question ===', error);
+    console.log('POST /Answer ===', error);
 
     res.sendStatus(500);
   }
 }
-async function editQuestion(req, res) {
+async function editAnswers(req, res) {
   const { body_q } = req.body;
   const { id_q } = req.params;
   console.log('q_id', id_q);
   console.log('req.body', req.body);
 
   try {
-    const saveResult = await editQuestionDb(body_q, id_q);
+    const saveResult = await editAnswersDb(body_q, id_q);
     console.log('resp', saveResult);
     if (saveResult.affectedRows === 1) {
       res.status(201).json('Question successfully updated');
@@ -52,14 +55,14 @@ async function editQuestion(req, res) {
     res.sendStatus(500);
   }
 }
-async function deleteQuestion(req, res) {
+async function deleteAnswers(req, res) {
   //   const { body_q } = req.body;
   const { id_q } = req.params;
   console.log('q_id', id_q);
   //   console.log('req.body', req.body);
 
   try {
-    const saveResult = await deleteQuestionDb(id_q);
+    const saveResult = await deleteAnswersDb(id_q);
     console.log('resp', saveResult);
     if (saveResult.affectedRows === 1) {
       res.status(201).json('Question successfully deleted');
@@ -73,8 +76,8 @@ async function deleteQuestion(req, res) {
   }
 }
 module.exports = {
-  deleteQuestion,
-  getQuestions,
-  postQuestion,
-  editQuestion,
+  deleteAnswers,
+  getAnswers,
+  postAnswers,
+  editAnswers,
 };
