@@ -26,9 +26,10 @@ function postQuestionDb(title_q, body_q, user_id) {
   return executeDb(sql, [title_q, body_q, user_id]);
 }
 
-function editQuestionDb(body_q, id_q) {
-  const sql = `UPDATE questions SET body_q = (?) WHERE questions.id_q = ${id_q}`;
-  return executeDb(sql, [body_q]);
+function editQuestionDb(title_q, body_q, id_q) {
+  //   const sql = `UPDATE questions SET body_q = (?) WHERE questions.id_q = ${id_q}`;
+  const sql = `UPDATE questions SET title_q = (?), body_q = (?), edited_q = true WHERE questions.id_q = ${id_q}`;
+  return executeDb(sql, [title_q, body_q]);
 }
 function deleteQuestionDb(id_q) {
   const sql = `UPDATE questions SET archived_q = 1 WHERE questions.id_q = ${id_q}`;

@@ -36,31 +36,34 @@ GET http://localhost:3000/api/questions
 ###--------------------------------------POST question
 POST http://localhost:3000/api/questions 
 Content-Type: application/json 
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NTg4NjczNTMsImV4cCI6MTY1ODg3MDk1M30.wEfaDfxnwk2G0OKYt4kZ61glV0srYJg4D5HhePoSn-M
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NTg5MDcyODEsImV4cCI6MTY1ODkxMDg4MX0.BKtKLColXxbyyRNbuDIH-JzMQCeofuDUvD4HePhSouo
 
 {
-"title_q": "Medzioklinis suo", 
-"body_q": "Koki suni pirkti?",
+"title_q": "Medzioklinis suo2", 
+"body_q": "Koki suni pirkti2?",
 "user_id": 2
 }
 
-###-----------------------------------UPDATE
+###-----------------------------------UPDATE question
 
-PATCH http://localhost:3000/api/questions/3
+PATCH http://localhost:3000/api/questions/1
 Content-Type: application/json 
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NTg4NjczNTMsImV4cCI6MTY1ODg3MDk1M30.wEfaDfxnwk2G0OKYt4kZ61glV0srYJg4D5HhePoSn-M
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NTg5MDk2MTgsImV4cCI6MTY1ODkxMzIxOH0.joSpgfN5us-WYhK2vKbU8yv9kfd59ID288eI8DVR3f8
 
 {
-"body_q": "Kokio suns nepirkti!!!!!"
+"title_q": "Medzioklinis suo23",
+"body_q": "Kokio suns nepirkti!!!!!???333444"
+
 }
 
 ###-----------------------------------DELETE
 
-PATCH http://localhost:3000/api/questions/d/3
+DELETE http://localhost:3000/api/questions/5
 Content-Type: application/json 
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NTg4NzEzNzksImV4cCI6MTY1ODg3NDk3OX0.TRh_2k2jRG5Uf-v3N7CRFd_AMZHKBDN0Hy0UhK4ZPKE
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NTg5MDcyODEsImV4cCI6MTY1ODkxMDg4MX0.BKtKLColXxbyyRNbuDIH-JzMQCeofuDUvD4HePhSouo
 
 ###----------------------------------------ANSWERS----------
+###---------------------------------------------------------------------
 ###----------------------------Get answers by question ID
 GET http://localhost:3000/api/questions/1/answers
 
@@ -68,10 +71,27 @@ GET http://localhost:3000/api/questions/1/answers
 
 POST http://localhost:3000/api/questions/1/answers
 Content-Type: application/json 
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NTg5MDE5MDcsImV4cCI6MTY1ODkwNTUwN30.AYanxQXy7J2pj1VvpX2HrUK9goDFVG5hvOO6rtqc1bc
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NTg5MTAxNjIsImV4cCI6MTY1ODkxMzc2Mn0.LyE2gSoDhyhCwfF5DdFp6RTDUwcPx5Le8xN7ahwyJz8
 
 {
 
-"body_a": "Pirk maza suni!",
+"body_a": "Nepirk suns!",
 "user_id": 2
 }
+
+###-----------------------------------UPDATE answer
+
+PATCH http://localhost:3000/api/answers/1
+Content-Type: application/json 
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NTg5MDk2MTgsImV4cCI6MTY1ODkxMzIxOH0.joSpgfN5us-WYhK2vKbU8yv9kfd59ID288eI8DVR3f8
+
+{
+
+"body_a": "Geriau pirkti kudlota suni Patch"
+
+}
+###-----------------------------------DELETE answer
+
+DELETE http://localhost:3000/api/answers/3
+Content-Type: application/json 
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NTg5MDk2MTgsImV4cCI6MTY1ODkxMzIxOH0.joSpgfN5us-WYhK2vKbU8yv9kfd59ID288eI8DVR3f8

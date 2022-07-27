@@ -33,13 +33,14 @@ async function postQuestion(req, res) {
   }
 }
 async function editQuestion(req, res) {
-  const { body_q } = req.body;
+  const { title_q, body_q } = req.body;
   const { id_q } = req.params;
   console.log('q_id', id_q);
-  console.log('req.body', req.body);
+  console.log('body_q', body_q);
+  console.log('title_q', title_q);
 
   try {
-    const saveResult = await editQuestionDb(body_q, id_q);
+    const saveResult = await editQuestionDb(title_q, body_q, id_q);
     console.log('resp', saveResult);
     if (saveResult.affectedRows === 1) {
       res.status(201).json('Question successfully updated');
@@ -52,6 +53,26 @@ async function editQuestion(req, res) {
     res.sendStatus(500);
   }
 }
+// async function editQuestion(req, res) {
+//   const { body_q } = req.body;
+//   const { id_q } = req.params;
+//   console.log('q_id', id_q);
+//   console.log('req.body', req.body);
+
+//   try {
+//     const saveResult = await editQuestionDb(body_q, id_q);
+//     console.log('resp', saveResult);
+//     if (saveResult.affectedRows === 1) {
+//       res.status(201).json('Question successfully updated');
+//       return;
+//     }
+//     res.status(400).json('Error in updating Question ');
+//   } catch (error) {
+//     console.log('patch /Question ===', error);
+
+//     res.sendStatus(500);
+//   }
+// }
 async function deleteQuestion(req, res) {
   //   const { body_q } = req.body;
   const { id_q } = req.params;
@@ -67,7 +88,7 @@ async function deleteQuestion(req, res) {
     }
     res.status(400).json('Error in deleting Question ');
   } catch (error) {
-    console.log('delete /Question ===', error);
+    console.log('patch /Question ===', error);
 
     res.sendStatus(500);
   }

@@ -26,17 +26,17 @@ function postAnswersDb(id_q, body_a, user_id) {
   return executeDb(sql, [id_q, body_a, user_id]);
 }
 
-function editAnswersDb(body_q, id_q) {
-  const sql = `UPDATE questions SET body_q = (?) WHERE questions.id_q = ${id_q}`;
-  return executeDb(sql, [body_q]);
+function editAnswersDb(body_a, id_a) {
+  const sql = `UPDATE answers SET body_a = (?), edited_a = true WHERE answers.id_a = ${id_a}`;
+  return executeDb(sql, [body_a]);
 }
-// function deleteAnswersDb(id_q) {
-//   const sql = `UPDATE questions SET archived_q = 1 WHERE questions.id_q = ${id_q}`;
-//   return executeDb(sql, []);
-// }
+function deleteAnswersDb(id_a) {
+  const sql = `UPDATE answers SET archived_a = 1 WHERE answers.id_a = ${id_a}`;
+  return executeDb(sql, []);
+}
 module.exports = {
   getAnswersDb,
   postAnswersDb,
   editAnswersDb,
-  //   deleteAnswersDb,
+  deleteAnswersDb,
 };

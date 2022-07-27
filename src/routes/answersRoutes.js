@@ -19,6 +19,6 @@ answersRoutes.post('/questions/:id_q/answers', validateToken, postAnswers);
 
 answersRoutes.patch('/answers/:id_a', validateToken, editAnswers);
 
-answersRoutes.patch('/answers/d/:id_a', validateToken, deleteAnswers);
+answersRoutes.delete('/answers/:id_a', validateToken, deleteAnswers);
 // -------------------------------------------
 module.exports = answersRoutes;

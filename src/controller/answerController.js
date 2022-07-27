@@ -36,41 +36,41 @@ async function postAnswers(req, res) {
   }
 }
 async function editAnswers(req, res) {
-  const { body_q } = req.body;
-  const { id_q } = req.params;
-  console.log('q_id', id_q);
+  const { body_a } = req.body;
+  const { id_a } = req.params;
+  console.log('q_id', id_a);
   console.log('req.body', req.body);
 
   try {
-    const saveResult = await editAnswersDb(body_q, id_q);
+    const saveResult = await editAnswersDb(body_a, id_a);
     console.log('resp', saveResult);
     if (saveResult.affectedRows === 1) {
-      res.status(201).json('Question successfully updated');
+      res.status(201).json('Answer successfully updated');
       return;
     }
-    res.status(400).json('Error in updating Question ');
+    res.status(400).json('Error in updating Answers ');
   } catch (error) {
-    console.log('patch /Question ===', error);
+    console.log('patch /Answers ===', error);
 
     res.sendStatus(500);
   }
 }
 async function deleteAnswers(req, res) {
   //   const { body_q } = req.body;
-  const { id_q } = req.params;
-  console.log('q_id', id_q);
+  const { id_a } = req.params;
+  console.log('id_a', id_a);
   //   console.log('req.body', req.body);
 
   try {
-    const saveResult = await deleteAnswersDb(id_q);
+    const saveResult = await deleteAnswersDb(id_a);
     console.log('resp', saveResult);
     if (saveResult.affectedRows === 1) {
-      res.status(201).json('Question successfully deleted');
+      res.status(201).json('Answer successfully deleted');
       return;
     }
-    res.status(400).json('Error in deleting Question ');
+    res.status(400).json('Error in deleting Answer ');
   } catch (error) {
-    console.log('delete /Question ===', error);
+    console.log('delete /Answer ===', error);
 
     res.sendStatus(500);
   }
