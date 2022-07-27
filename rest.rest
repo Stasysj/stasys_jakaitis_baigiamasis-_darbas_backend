@@ -126,7 +126,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NTg5MTQzO
 
 {
 
-"id_a": 1
+"id_a": 2
 
 }
 ###-------------------------------------DISLIKE answer
@@ -137,6 +137,6 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NTg5MTQzO
 
 {
 
-"id_a": 2
+"id_a": 3
 
 }
