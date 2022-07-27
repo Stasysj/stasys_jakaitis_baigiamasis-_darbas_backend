@@ -95,3 +95,26 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NTg5MDk2M
 DELETE http://localhost:3000/api/answers/3
 Content-Type: application/json 
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NTg5MDk2MTgsImV4cCI6MTY1ODkxMzIxOH0.joSpgfN5us-WYhK2vKbU8yv9kfd59ID288eI8DVR3f8
+
+###-------------------------------------LIKE question
+
+PATCH http://localhost:3000/api/questions/likes
+Content-Type: application/json 
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NTg5MDk2MTgsImV4cCI6MTY1ODkxMzIxOH0.joSpgfN5us-WYhK2vKbU8yv9kfd59ID288eI8DVR3f8
+
+{
+
+"id_q": 1
+
+}
+###-------------------------------------DISLIKE question
+
+PATCH http://localhost:3000/api/questions/dislikes
+Content-Type: application/json 
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NTg5MDk2MTgsImV4cCI6MTY1ODkxMzIxOH0.joSpgfN5us-WYhK2vKbU8yv9kfd59ID288eI8DVR3f8
+
+{
+
+"id_q": 1
+
+}

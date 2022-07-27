@@ -4,6 +4,8 @@ const {
   postQuestion,
   editQuestion,
   deleteQuestion,
+  likeQuestion,
+  dislikeQuestion,
 } = require('../controller/questionsController');
 
 const { validateToken } = require('../middleware');
@@ -17,8 +19,12 @@ questionsRoutes.get('/questions', getQuestions);
 
 questionsRoutes.post('/questions', validateToken, postQuestion);
 
+questionsRoutes.patch('/questions/likes', validateToken, likeQuestion);
+questionsRoutes.patch('/questions/dislikes', validateToken, dislikeQuestion);
+
 questionsRoutes.patch('/questions/:id_q', validateToken, editQuestion);
 
 questionsRoutes.delete('/questions/:id_q', validateToken, deleteQuestion);
+
 // -------------------------------------------
 module.exports = questionsRoutes;

@@ -3,6 +3,8 @@ const {
   postQuestionDb,
   editQuestionDb,
   deleteQuestionDb,
+  likeQuestionDb,
+  dislikeQuestionDb,
 } = require('../model/questionsModel');
 
 // ------------------------------------------
@@ -93,7 +95,43 @@ async function deleteQuestion(req, res) {
     res.sendStatus(500);
   }
 }
+async function likeQuestion(req, res) {
+  const { id_q } = req.body;
+
+  try {
+    const saveResult = await likeQuestionDb(id_q);
+    console.log('resp', saveResult);
+    if (saveResult.affectedRows === 1) {
+      res.status(201).json('Question successfully updated');
+      return;
+    }
+    res.status(400).json('Error in updating Question ');
+  } catch (error) {
+    console.log('patch /Question ===', error);
+
+    res.sendStatus(500);
+  }
+}
+async function dislikeQuestion(req, res) {
+  const { id_q } = req.body;
+
+  try {
+    const saveResult = await dislikeQuestionDb(id_q);
+    console.log('resp', saveResult);
+    if (saveResult.affectedRows === 1) {
+      res.status(201).json('Question successfully updated');
+      return;
+    }
+    res.status(400).json('Error in updating Question ');
+  } catch (error) {
+    console.log('patch /Question ===', error);
+
+    res.sendStatus(500);
+  }
+}
 module.exports = {
+  dislikeQuestion,
+  likeQuestion,
   deleteQuestion,
   getQuestions,
   postQuestion,

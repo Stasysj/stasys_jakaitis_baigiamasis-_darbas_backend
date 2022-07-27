@@ -35,7 +35,17 @@ function deleteQuestionDb(id_q) {
   const sql = `UPDATE questions SET archived_q = 1 WHERE questions.id_q = ${id_q}`;
   return executeDb(sql, []);
 }
+function likeQuestionDb(id_q) {
+  const sql = `UPDATE questions SET like_q = like_q + 1  WHERE questions.id_q = ${id_q}`;
+  return executeDb(sql, []);
+}
+function dislikeQuestionDb(id_q) {
+  const sql = `UPDATE questions SET like_q = like_q - 1  WHERE questions.id_q = ${id_q}`;
+  return executeDb(sql, []);
+}
 module.exports = {
+  dislikeQuestionDb,
+  likeQuestionDb,
   getQuestionsDb,
   postQuestionDb,
   editQuestionDb,
