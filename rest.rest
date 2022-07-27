@@ -118,3 +118,25 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NTg5MDk2M
 "id_q": 1
 
 }
+###-------------------------------------LIKE Answer
+
+PATCH http://localhost:3000/api/answers/likes
+Content-Type: application/json 
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NTg5MTQzOTMsImV4cCI6MTY1ODk5NzE5M30.03s18YRqp4cXc-ALjaPRE9aZN76pw9Y7nXxfKqfZBjg
+
+{
+
+"id_a": 1
+
+}
+###-------------------------------------DISLIKE answer
+
+PATCH http://localhost:3000/api/answers/dislikes
+Content-Type: application/json 
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NTg5MTQzOTMsImV4cCI6MTY1ODk5NzE5M30.03s18YRqp4cXc-ALjaPRE9aZN76pw9Y7nXxfKqfZBjg
+
+{
+
+"id_a": 2
+
+}

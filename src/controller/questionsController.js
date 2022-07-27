@@ -102,12 +102,12 @@ async function likeQuestion(req, res) {
     const saveResult = await likeQuestionDb(id_q);
     console.log('resp', saveResult);
     if (saveResult.affectedRows === 1) {
-      res.status(201).json('Question successfully updated');
+      res.status(201).json('Question successfully liked');
       return;
     }
-    res.status(400).json('Error in updating Question ');
+    res.status(400).json('Error in liking Question ');
   } catch (error) {
-    console.log('patch /Question ===', error);
+    console.log('patch /Question like ===', error);
 
     res.sendStatus(500);
   }
@@ -119,12 +119,12 @@ async function dislikeQuestion(req, res) {
     const saveResult = await dislikeQuestionDb(id_q);
     console.log('resp', saveResult);
     if (saveResult.affectedRows === 1) {
-      res.status(201).json('Question successfully updated');
+      res.status(201).json('Question successfully disliked');
       return;
     }
-    res.status(400).json('Error in updating Question ');
+    res.status(400).json('Error in disliking Question ');
   } catch (error) {
-    console.log('patch /Question ===', error);
+    console.log('patch /Question disliking ===', error);
 
     res.sendStatus(500);
   }

@@ -3,6 +3,8 @@ const {
   postAnswersDb,
   editAnswersDb,
   deleteAnswersDb,
+  likeAnswersDb,
+  dislikeAnswersDb,
 } = require('../model/answerModel');
 
 // ------------------------------------------
@@ -75,7 +77,43 @@ async function deleteAnswers(req, res) {
     res.sendStatus(500);
   }
 }
+async function likeAnswer(req, res) {
+  const { id_a } = req.body;
+
+  try {
+    const saveResult = await likeAnswersDb(id_a);
+    console.log('resp', saveResult);
+    if (saveResult.affectedRows === 1) {
+      res.status(201).json('Answer successfully liked');
+      return;
+    }
+    res.status(400).json('Error in liking Answer ');
+  } catch (error) {
+    console.log('patch /Answer like ===', error);
+
+    res.sendStatus(500);
+  }
+}
+async function dislikeAnswer(req, res) {
+  const { id_a } = req.body;
+
+  try {
+    const saveResult = await dislikeAnswersDb(id_a);
+    console.log('resp', saveResult);
+    if (saveResult.affectedRows === 1) {
+      res.status(201).json('Answer successfully disliked');
+      return;
+    }
+    res.status(400).json('Error in disliking Answer ');
+  } catch (error) {
+    console.log('patch /Answe disliking ===', error);
+
+    res.sendStatus(500);
+  }
+}
 module.exports = {
+  likeAnswer,
+  dislikeAnswer,
   deleteAnswers,
   getAnswers,
   postAnswers,
