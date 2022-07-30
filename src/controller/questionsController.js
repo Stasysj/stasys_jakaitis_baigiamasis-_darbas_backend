@@ -5,12 +5,35 @@ const {
   deleteQuestionDb,
   likeQuestionDb,
   dislikeQuestionDb,
+  getQuestionsByIdDb,
+  counterDislikeQuestionDb,
+  getQuestionsByUserIdDb,
 } = require('../model/questionsModel');
 
 // ------------------------------------------
 async function getQuestions(req, res) {
   try {
     const questArr = await getQuestionsDb();
+    res.json(questArr);
+  } catch (error) {
+    console.log('error in getting Question route ===', error);
+    res.sendStatus(500);
+  }
+}
+async function getQuestionsById(req, res) {
+  try {
+    const { id_q } = req.params;
+    const questArr = await getQuestionsByIdDb(id_q);
+    res.json(questArr);
+  } catch (error) {
+    console.log('error in getting Question route ===', error);
+    res.sendStatus(500);
+  }
+}
+async function getQuestionsByUserId(req, res) {
+  try {
+    const { user_id } = req.params;
+    const questArr = await getQuestionsByUserIdDb(user_id);
     res.json(questArr);
   } catch (error) {
     console.log('error in getting Question route ===', error);
@@ -129,7 +152,27 @@ async function dislikeQuestion(req, res) {
     res.sendStatus(500);
   }
 }
+// async function counterDislikeQuestion(req, res) {
+//   const { id_q, user_id } = req.body;
+
+//   try {
+//     const saveResult = await counterDislikeQuestionDb(id_q, user_id);
+//     console.log('resp', saveResult);
+//     if (saveResult.affectedRows === 1) {
+//       res.status(201).json('Question successfully disliked');
+//       return;
+//     }
+//     res.status(400).json('Error in disliking Question ');
+//   } catch (error) {
+//     console.log('patch /Question disliking ===', error);
+
+//     res.sendStatus(500);
+//   }
+// }
 module.exports = {
+  //   counterDislikeQuestion,
+  getQuestionsByUserId,
+  getQuestionsById,
   dislikeQuestion,
   likeQuestion,
   deleteQuestion,

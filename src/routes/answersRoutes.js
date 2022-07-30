@@ -6,6 +6,7 @@ const {
   deleteAnswers,
   likeAnswer,
   dislikeAnswer,
+  getAnswersByUserId,
 } = require('../controller/answerController');
 
 const { validateToken } = require('../middleware');
@@ -26,5 +27,8 @@ answersRoutes.patch('/answers/dislikes', validateToken, dislikeAnswer);
 answersRoutes.patch('/answers/:id_a', validateToken, editAnswers);
 
 answersRoutes.delete('/answers/:id_a', validateToken, deleteAnswers);
+
+answersRoutes.get('/private/answers/:user_id', validateToken, getAnswersByUserId);
+
 // -------------------------------------------
 module.exports = answersRoutes;

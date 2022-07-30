@@ -20,6 +20,10 @@ function getAnswersDb(id_q) {
   const sql = `SELECT * FROM answers WHERE answers.archived_a = 0 AND answers.id_q = ${id_q}`;
   return executeDb(sql, []);
 }
+function getAnswersByUserIdDb(user_id) {
+  const sql = `SELECT * FROM answers WHERE answers.archived_a = 0 AND answers.user_id = ${user_id}`;
+  return executeDb(sql, []);
+}
 
 function postAnswersDb(id_q, body_a, user_id) {
   const sql = 'INSERT INTO answers (id_q, body_a, user_id) VALUES (?,?,?)';
@@ -44,6 +48,7 @@ function dislikeAnswersDb(id_a) {
 }
 
 module.exports = {
+  getAnswersByUserIdDb,
   likeAnswersDb,
   dislikeAnswersDb,
   getAnswersDb,

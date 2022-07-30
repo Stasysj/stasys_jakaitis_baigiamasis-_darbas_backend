@@ -20,6 +20,14 @@ function getQuestionsDb() {
   const sql = 'SELECT * FROM questions WHERE questions.archived_q = 0';
   return executeDb(sql, []);
 }
+function getQuestionsByIdDb(id_q) {
+  const sql = `SELECT * FROM questions WHERE questions.archived_q = 0 AND id_q = ${id_q}`;
+  return executeDb(sql, []);
+}
+function getQuestionsByUserIdDb(user_id) {
+  const sql = `SELECT * FROM questions WHERE questions.archived_q = 0 AND user_id = ${user_id}`;
+  return executeDb(sql, []);
+}
 
 function postQuestionDb(title_q, body_q, user_id) {
   const sql = 'INSERT INTO questions (title_q, body_q, user_id) VALUES (?,?,?)';
@@ -28,11 +36,12 @@ function postQuestionDb(title_q, body_q, user_id) {
 
 function editQuestionDb(title_q, body_q, id_q) {
   //   const sql = `UPDATE questions SET body_q = (?) WHERE questions.id_q = ${id_q}`;
-  const sql = `UPDATE questions SET title_q = (?), body_q = (?), edited_q = true WHERE questions.id_q = ${id_q}`;
+  const sql = `UPDATE questions SET title_q = (?), body_q = (?), edited_q = 1 WHERE questions.id_q = ${id_q}`;
   return executeDb(sql, [title_q, body_q]);
 }
 function deleteQuestionDb(id_q) {
-  const sql = `UPDATE questions SET archived_q = 1 WHERE questions.id_q = ${id_q}`;
+  //   const sql = `UPDATE questions SET archived_q = 1 WHERE questions.id_q = ${id_q}`;
+  const sql = `DELETE FROM questions  WHERE questions.id_q = ${id_q}`;
   return executeDb(sql, []);
 }
 function likeQuestionDb(id_q) {
@@ -43,7 +52,16 @@ function dislikeQuestionDb(id_q) {
   const sql = `UPDATE questions SET like_q = like_q - 1  WHERE questions.id_q = ${id_q}`;
   return executeDb(sql, []);
 }
+// function counterDislikeQuestionDb(id_q, user_id) {
+//   const reik = 'z'.concat(user_id);
+//   //   const sql = `UPDATE questions SET likes_counter_q = likes_counter_q + ',${id_q}' WHERE questions.id_q = ${id_q}`;
+//   const sql = `UPDATE questions SET  likes_counter_q = CONCAT('${reik}',likes_counter_q ) WHERE questions.id_q = ${id_q}`;
+//   return executeDb(sql, []);
+// }
 module.exports = {
+  //   counterDislikeQuestionDb,
+  getQuestionsByUserIdDb,
+  getQuestionsByIdDb,
   dislikeQuestionDb,
   likeQuestionDb,
   getQuestionsDb,

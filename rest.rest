@@ -2,51 +2,55 @@
 
 ####--------------------------------------------USERS-------------
 ###-----------------------------/get user
-GET http://localhost:3000/api/users
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImlhdCI6MTY1ODg0MjkzMSwiZXhwIjoxNjU4ODQ2NTMxfQ.id4xQfkHWIC7S0z3yw1h7imA9hOdsvs4ID0JoYE0RUg
+GET http://localhost:3001/api/users
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NTkxNzA2NjEsImV4cCI6MTY1OTI1MzQ2MX0.ZRjO3QAcyLgZV4T_tYd0cwPKY29dbYp1x3VnscRUhys
 
 
 ###----------------------------/register
 
-POST http://localhost:3000/api/register
+POST http://localhost:3001/api/register
 Content-Type: application/json
 
  {
-    "full_name": "marius1",
-    "email": "marius1@xxx.lt",
+    "full_name": "marius10",
+    "email": "marius10@xxx.lt",
     "password": "123456"
     
   }
 
 ###------------------------------/login
 
-POST http://localhost:3000/api/login
+POST http://localhost:3001/api/login
 Content-Type: application/json
 
  {
-    "full_name": "marius1",
-    "email": "marius1@xxx.lt",
+    "full_name": "marius2",
+    "email": "marius2@xxx.lt",
     "password": "123456"
     
   }
 ###-------------------------------------------------------------QUESTION--------------
 ###---------------------------------------GET ALL questions
-GET http://localhost:3000/api/questions 
+GET http://localhost:3001/api/questions 
+###---------------------------------------GET  question by id_q
+GET http://localhost:3001/api/questions/1 
+###---------------------------------------GET  question by USER_id
+GET http://localhost:3001/api/private/questions/2
 
 ###--------------------------------------POST question
-POST http://localhost:3000/api/questions 
+POST http://localhost:3001/api/questions 
 Content-Type: application/json 
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NTg5MDcyODEsImV4cCI6MTY1ODkxMDg4MX0.BKtKLColXxbyyRNbuDIH-JzMQCeofuDUvD4HePhSouo
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NTkxNzA3MTEsImV4cCI6MTY1OTI1MzUxMX0.cdi-VzJPT0t_3PURxE68cADsgnLnR-qXbn_lJsw2iU4
 
 {
-"title_q": "Medzioklinis suo2", 
-"body_q": "Koki suni pirkti2?",
-"user_id": 2
+"title_q": "Paukshiu medziokle", 
+"body_q": "Ar galima medzioti paukscius?",
+"user_id": 22
 }
 
 ###-----------------------------------UPDATE question
 
-PATCH http://localhost:3000/api/questions/1
+PATCH http://localhost:3001/api/questions/1
 Content-Type: application/json 
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NTg5MDk2MTgsImV4cCI6MTY1ODkxMzIxOH0.joSpgfN5us-WYhK2vKbU8yv9kfd59ID288eI8DVR3f8
 
@@ -58,30 +62,34 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NTg5MDk2M
 
 ###-----------------------------------DELETE
 
-DELETE http://localhost:3000/api/questions/5
+DELETE http://localhost:3001/api/questions/9
 Content-Type: application/json 
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NTg5MDcyODEsImV4cCI6MTY1ODkxMDg4MX0.BKtKLColXxbyyRNbuDIH-JzMQCeofuDUvD4HePhSouo
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NTkxODMyMjgsImV4cCI6MTY1OTI2NjAyOH0.WzyEvlrzPg0xaz7ELMENDdxxOOG70Mv289TSZVI5EpY
 
 ###----------------------------------------ANSWERS----------
 ###---------------------------------------------------------------------
 ###----------------------------Get answers by question ID
-GET http://localhost:3000/api/questions/1/answers
+GET http://localhost:3001/api/questions/1/answers
+
+###---------------------------------------GET  anseres by USER_id
+GET http://localhost:3001/api/private/answers/22
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NTkxNzA2NjEsImV4cCI6MTY1OTI1MzQ2MX0.ZRjO3QAcyLgZV4T_tYd0cwPKY29dbYp1x3VnscRUhys
 
 ###---------------------------Post answers by question ID
 
-POST http://localhost:3000/api/questions/1/answers
+POST http://localhost:3001/api/questions/10/answers
 Content-Type: application/json 
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NTg5MTAxNjIsImV4cCI6MTY1ODkxMzc2Mn0.LyE2gSoDhyhCwfF5DdFp6RTDUwcPx5Le8xN7ahwyJz8
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NTkxOTI4MTIsImV4cCI6MTY1OTI3NTYxMn0.ypDknyHOT5L7q0zyCqnb2k2_ru0d3mIAsYkyCc6rjE4
 
 {
 
-"body_a": "Nepirk suns!",
-"user_id": 2
+"body_a": "Pirk kate.!",
+"user_id": 22
 }
 
 ###-----------------------------------UPDATE answer
 
-PATCH http://localhost:3000/api/answers/1
+PATCH http://localhost:3001/api/answers/1
 Content-Type: application/json 
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NTg5MDk2MTgsImV4cCI6MTY1ODkxMzIxOH0.joSpgfN5us-WYhK2vKbU8yv9kfd59ID288eI8DVR3f8
 
@@ -92,13 +100,13 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NTg5MDk2M
 }
 ###-----------------------------------DELETE answer
 
-DELETE http://localhost:3000/api/answers/3
+DELETE http://localhost:3001/api/answers/3
 Content-Type: application/json 
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NTg5MDk2MTgsImV4cCI6MTY1ODkxMzIxOH0.joSpgfN5us-WYhK2vKbU8yv9kfd59ID288eI8DVR3f8
 
 ###-------------------------------------LIKE question
 
-PATCH http://localhost:3000/api/questions/likes
+PATCH http://localhost:3001/api/questions/likes
 Content-Type: application/json 
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NTg5MDk2MTgsImV4cCI6MTY1ODkxMzIxOH0.joSpgfN5us-WYhK2vKbU8yv9kfd59ID288eI8DVR3f8
 
@@ -109,20 +117,32 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NTg5MDk2M
 }
 ###-------------------------------------DISLIKE question
 
-PATCH http://localhost:3000/api/questions/dislikes
+PATCH http://localhost:3001/api/questions/dislikes
 Content-Type: application/json 
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NTg5MDk2MTgsImV4cCI6MTY1ODkxMzIxOH0.joSpgfN5us-WYhK2vKbU8yv9kfd59ID288eI8DVR3f8
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NTkwOTA5NTEsImV4cCI6MTY1OTE3Mzc1MX0.YWGl6u7E8R9WcsERbxLrD-SQSL478KMCpxcYB9xkwN4
+
+{
+
+"id_q": 3
+
+}
+
+###
+PATCH http://localhost:3001/api/questions/dis/counts
+Content-Type: application/json 
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NTkxMjc4NjEsImV4cCI6MTY1OTIxMDY2MX0.La20-vWbaPdN_Y7oWYpZ1jtc9NgKY99Dbd6ealArvDI
 
 {
 
 "id_q": 1
 
+
 }
 ###-------------------------------------LIKE Answer
 
-PATCH http://localhost:3000/api/answers/likes
+PATCH http://localhost:3001/api/answers/likes
 Content-Type: application/json 
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NTg5MTQzOTMsImV4cCI6MTY1ODk5NzE5M30.03s18YRqp4cXc-ALjaPRE9aZN76pw9Y7nXxfKqfZBjg
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NTkwOTA5NTEsImV4cCI6MTY1OTE3Mzc1MX0.YWGl6u7E8R9WcsERbxLrD-SQSL478KMCpxcYB9xkwN4
 
 {
 
@@ -131,12 +151,12 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NTg5MTQzO
 }
 ###-------------------------------------DISLIKE answer
 
-PATCH http://localhost:3000/api/answers/dislikes
+PATCH http://localhost:3001/api/answers/dislikes
 Content-Type: application/json 
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NTg5MTQzOTMsImV4cCI6MTY1ODk5NzE5M30.03s18YRqp4cXc-ALjaPRE9aZN76pw9Y7nXxfKqfZBjg
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NTkwOTA5NTEsImV4cCI6MTY1OTE3Mzc1MX0.YWGl6u7E8R9WcsERbxLrD-SQSL478KMCpxcYB9xkwN4
 
 {
 
-"id_a": 3
+"id_a": 3 
 
 }
