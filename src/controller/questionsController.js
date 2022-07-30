@@ -6,7 +6,7 @@ const {
   likeQuestionDb,
   dislikeQuestionDb,
   getQuestionsByIdDb,
-  counterDislikeQuestionDb,
+  //   counterDislikeQuestionDb,
   getQuestionsByUserIdDb,
 } = require('../model/questionsModel');
 

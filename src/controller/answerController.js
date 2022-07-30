@@ -6,6 +6,7 @@ const {
   likeAnswersDb,
   dislikeAnswersDb,
   getAnswersByUserIdDb,
+  getAnswerByAnswerIddDb,
 } = require('../model/answerModel');
 
 // ------------------------------------------
@@ -25,6 +26,17 @@ async function getAnswersByUserId(req, res) {
     const { user_id } = req.params;
 
     const questArr = await getAnswersByUserIdDb(user_id);
+    res.json(questArr);
+  } catch (error) {
+    console.log('error in getting Answers route ===', error);
+    res.sendStatus(500);
+  }
+}
+async function getAnswerByAnswerId(req, res) {
+  try {
+    const { id_a } = req.params;
+
+    const questArr = await getAnswerByAnswerIddDb(id_a);
     res.json(questArr);
   } catch (error) {
     console.log('error in getting Answers route ===', error);
@@ -124,6 +136,7 @@ async function dislikeAnswer(req, res) {
   }
 }
 module.exports = {
+  getAnswerByAnswerId,
   getAnswersByUserId,
   likeAnswer,
   dislikeAnswer,

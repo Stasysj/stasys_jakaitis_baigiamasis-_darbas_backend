@@ -75,6 +75,10 @@ GET http://localhost:3001/api/questions/1/answers
 GET http://localhost:3001/api/private/answers/22
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NTkxNzA2NjEsImV4cCI6MTY1OTI1MzQ2MX0.ZRjO3QAcyLgZV4T_tYd0cwPKY29dbYp1x3VnscRUhys
 
+###---------------------------------------GET  ansere by id_a
+GET http://localhost:3001/api/answers/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NTkxNzA2NjEsImV4cCI6MTY1OTI1MzQ2MX0.ZRjO3QAcyLgZV4T_tYd0cwPKY29dbYp1x3VnscRUhys
+
 ###---------------------------Post answers by question ID
 
 POST http://localhost:3001/api/questions/10/answers
@@ -83,7 +87,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NTkxOTI4M
 
 {
 
-"body_a": "Pirk kate.!",
+"body_a": "Pirk kate.2!",
 "user_id": 22
 }
 
