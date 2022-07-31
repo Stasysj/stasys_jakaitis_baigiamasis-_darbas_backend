@@ -43,10 +43,10 @@ async function getQuestionsByUserId(req, res) {
 }
 
 async function postQuestion(req, res) {
-  const { title_q, body_q, user_id } = req.body;
+  const { title_q, body_q, user_id, add_time_q, add_time_mili_q } = req.body;
 
   try {
-    const saveResult = await postQuestionDb(title_q, body_q, user_id);
+    const saveResult = await postQuestionDb(title_q, body_q, user_id, add_time_q, add_time_mili_q);
     if (saveResult.affectedRows === 1) {
       res.status(201).json('Question successfully added');
       return;

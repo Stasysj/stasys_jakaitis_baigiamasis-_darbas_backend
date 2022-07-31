@@ -29,9 +29,10 @@ function getQuestionsByUserIdDb(user_id) {
   return executeDb(sql, []);
 }
 
-function postQuestionDb(title_q, body_q, user_id) {
-  const sql = 'INSERT INTO questions (title_q, body_q, user_id) VALUES (?,?,?)';
-  return executeDb(sql, [title_q, body_q, user_id]);
+function postQuestionDb(title_q, body_q, user_id, add_time_q, add_time_mili_q) {
+  const sql =
+    'INSERT INTO questions (title_q, body_q, user_id, add_time_q, add_time_mili_q) VALUES (?,?,?,?,?)';
+  return executeDb(sql, [title_q, body_q, user_id, add_time_q, add_time_mili_q]);
 }
 
 function editQuestionDb(title_q, body_q, id_q) {

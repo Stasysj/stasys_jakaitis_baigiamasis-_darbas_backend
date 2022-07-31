@@ -45,11 +45,11 @@ async function getAnswerByAnswerId(req, res) {
 }
 
 async function postAnswers(req, res) {
-  const { user_id, body_a } = req.body;
+  const { user_id, body_a, add_time_a, add_time_mili_a } = req.body;
   const { id_q } = req.params;
   console.log('id_q, body_a, user_id', id_q, body_a, user_id);
   try {
-    const saveResult = await postAnswersDb(id_q, body_a, user_id);
+    const saveResult = await postAnswersDb(id_q, body_a, user_id, add_time_a, add_time_mili_a);
     if (saveResult.affectedRows === 1) {
       res.status(201).json('Answer successfully added');
       return;

@@ -29,9 +29,10 @@ function getAnswerByAnswerIddDb(id_a) {
   return executeDb(sql, []);
 }
 
-function postAnswersDb(id_q, body_a, user_id) {
-  const sql = 'INSERT INTO answers (id_q, body_a, user_id) VALUES (?,?,?)';
-  return executeDb(sql, [id_q, body_a, user_id]);
+function postAnswersDb(id_q, body_a, user_id, add_time_a, add_time_mili_a) {
+  const sql =
+    'INSERT INTO answers (id_q, body_a, user_id,add_time_a, add_time_mili_a) VALUES (?,?,?,?,?)';
+  return executeDb(sql, [id_q, body_a, user_id, add_time_a, add_time_mili_a]);
 }
 
 function editAnswersDb(body_a, id_a) {
