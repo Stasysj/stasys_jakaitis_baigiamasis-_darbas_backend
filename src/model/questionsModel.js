@@ -48,6 +48,10 @@ function likeQuestionDb(id_q) {
   const sql = `UPDATE questions SET like_q = like_q + 1  WHERE questions.id_q = ${id_q}`;
   return executeDb(sql, []);
 }
+function addQuestionAnswersCountDb(id_q) {
+  const sql = `UPDATE questions SET number_a = number_a + 1  WHERE questions.id_q = ${id_q}`;
+  return executeDb(sql, []);
+}
 function dislikeQuestionDb(id_q) {
   const sql = `UPDATE questions SET like_q = like_q - 1  WHERE questions.id_q = ${id_q}`;
   return executeDb(sql, []);
@@ -60,6 +64,7 @@ function dislikeQuestionDb(id_q) {
 // }
 module.exports = {
   //   counterDislikeQuestionDb,
+  addQuestionAnswersCountDb,
   getQuestionsByUserIdDb,
   getQuestionsByIdDb,
   dislikeQuestionDb,

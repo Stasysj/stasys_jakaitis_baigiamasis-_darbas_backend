@@ -8,6 +8,8 @@ const {
   dislikeQuestion,
   getQuestionsById,
   getQuestionsByUserId,
+  addQuestionAnswersCount,
+
   //   counterDislikeQuestion,
 } = require('../controller/questionsController');
 
@@ -27,6 +29,8 @@ questionsRoutes.patch('/questions/likes', validateToken, likeQuestion);
 questionsRoutes.patch('/questions/dislikes', validateToken, dislikeQuestion);
 
 // questionsRoutes.patch('/questions/dis/counts', validateToken, counterDislikeQuestion);
+
+questionsRoutes.patch('/questions/answers/count', validateToken, addQuestionAnswersCount);
 
 questionsRoutes.patch('/questions/:id_q', validateToken, editQuestion);
 

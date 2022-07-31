@@ -38,7 +38,7 @@ GET http://localhost:3001/api/questions/1
 GET http://localhost:3001/api/private/questions/2
 
 ###--------------------------------------POST question
-POST http://localhost:3001/api/questions 
+POST http://localhost:3001/api/questions
 Content-Type: application/json 
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NTkxNzA3MTEsImV4cCI6MTY1OTI1MzUxMX0.cdi-VzJPT0t_3PURxE68cADsgnLnR-qXbn_lJsw2iU4
 
@@ -57,6 +57,17 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NTg5MDk2M
 {
 "title_q": "Medzioklinis suo23",
 "body_q": "Kokio suns nepirkti!!!!!???333444"
+
+}
+###-----------------------------------UPDATE question with answer count
+
+PATCH http://localhost:3001/api/questions/answers/count
+Content-Type: application/json 
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NTg5MDk2MTgsImV4cCI6MTY1ODkxMzIxOH0.joSpgfN5us-WYhK2vKbU8yv9kfd59ID288eI8DVR3f8
+
+{
+
+"id_q": 3,
 
 }
 

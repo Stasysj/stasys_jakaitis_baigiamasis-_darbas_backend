@@ -8,6 +8,7 @@ const {
   getQuestionsByIdDb,
   //   counterDislikeQuestionDb,
   getQuestionsByUserIdDb,
+  addQuestionAnswersCountDb,
 } = require('../model/questionsModel');
 
 // ------------------------------------------
@@ -135,6 +136,24 @@ async function likeQuestion(req, res) {
     res.sendStatus(500);
   }
 }
+async function addQuestionAnswersCount(req, res) {
+  const { id_q } = req.body;
+  console.log('iddddisas', id_q);
+
+  try {
+    const saveResult = await addQuestionAnswersCountDb(id_q);
+    console.log('resp', saveResult);
+    if (saveResult.affectedRows === 1) {
+      res.status(201).json('Answe to count add');
+      return;
+    }
+    res.status(400).json('Error in laddQuestionAnswersCount ');
+  } catch (error) {
+    console.log('patch /addQuestionAnswersCount ===', error);
+
+    res.sendStatus(500);
+  }
+}
 async function dislikeQuestion(req, res) {
   const { id_q } = req.body;
 
@@ -171,6 +190,8 @@ async function dislikeQuestion(req, res) {
 // }
 module.exports = {
   //   counterDislikeQuestion,
+  //   dislikeQuestionDb,
+  addQuestionAnswersCount,
   getQuestionsByUserId,
   getQuestionsById,
   dislikeQuestion,
