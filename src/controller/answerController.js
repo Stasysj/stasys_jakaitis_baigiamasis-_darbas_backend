@@ -7,6 +7,7 @@ const {
   dislikeAnswersDb,
   getAnswersByUserIdDb,
   getAnswerByAnswerIddDb,
+  deleteAnswersByquestionIdDb,
 } = require('../model/answerModel');
 
 // ------------------------------------------
@@ -101,6 +102,26 @@ async function deleteAnswers(req, res) {
     res.sendStatus(500);
   }
 }
+async function deleteAnswersByquestionId(req, res) {
+  //   const { body_q } = req.body;
+  const { id_q } = req.params;
+  console.log('id_q', id_q);
+  //   console.log('req.body', req.body);
+
+  try {
+    const saveResult = await deleteAnswersByquestionIdDb(id_q);
+    console.log('resp', saveResult);
+    if (saveResult.affectedRows === 1) {
+      res.status(201).json('Answers successfully deleted');
+      return;
+    }
+    res.status(400).json('Error in deleteAnswersByquestionIdDb ');
+  } catch (error) {
+    console.log('delete /deleteAnswersByquestionI ===', error);
+
+    res.sendStatus(500);
+  }
+}
 async function likeAnswer(req, res) {
   const { id_a } = req.body;
 
@@ -136,6 +157,7 @@ async function dislikeAnswer(req, res) {
   }
 }
 module.exports = {
+  deleteAnswersByquestionId,
   getAnswerByAnswerId,
   getAnswersByUserId,
   likeAnswer,

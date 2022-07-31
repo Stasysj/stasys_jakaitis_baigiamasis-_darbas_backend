@@ -40,7 +40,11 @@ function editAnswersDb(body_a, id_a) {
   return executeDb(sql, [body_a]);
 }
 function deleteAnswersDb(id_a) {
-  const sql = `UPDATE answers SET archived_a = 1 WHERE answers.id_a = ${id_a}`;
+  const sql = `DELETE FROM answers  WHERE answers.id_a = ${id_a}`;
+  return executeDb(sql, []);
+}
+function deleteAnswersByquestionIdDb(id_q) {
+  const sql = `DELETE FROM answers  WHERE answers.id_q = ${id_q}`;
   return executeDb(sql, []);
 }
 function likeAnswersDb(id_a) {
@@ -53,6 +57,7 @@ function dislikeAnswersDb(id_a) {
 }
 
 module.exports = {
+  deleteAnswersByquestionIdDb,
   getAnswerByAnswerIddDb,
   getAnswersByUserIdDb,
   likeAnswersDb,
