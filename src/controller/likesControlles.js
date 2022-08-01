@@ -4,8 +4,14 @@ const {
   patchLikesPoDislikeDb,
   patchDisLikesDb,
   patchDislikeLikeDb,
+  getLikesDbA,
+  patchLikesDbA,
+  patchDisLikesDbA,
+  patchLikesPoDislikeDbA,
+  patchDislikeLikeDbA,
 } = require('../model/likesModel');
 
+//----------------------------------------------
 async function getLikes(req, res) {
   try {
     const { user_id, id_q } = req.params;
@@ -66,6 +72,67 @@ async function patchDislikeLike(req, res) {
     res.sendStatus(500);
   }
 }
+//-------------------------------------------------------------------------------ANSWERS
+async function getLikesA(req, res) {
+  try {
+    const { user_id, id_a } = req.params;
+
+    const questArr = await getLikesDbA(user_id, id_a);
+    console.log('user_id, id_a', user_id, id_a);
+    res.json(questArr);
+  } catch (error) {
+    console.log('error in getting Likes route ===', error);
+    res.sendStatus(500);
+  }
+}
+async function patchLikesA(req, res) {
+  try {
+    const { user_id, id_a } = req.params;
+
+    const questArr = await patchLikesDbA(user_id, id_a);
+    console.log('user_id, id_a', user_id, id_a);
+    res.json(questArr);
+  } catch (error) {
+    console.log('error in getting Likes route ===', error);
+    res.sendStatus(500);
+  }
+}
+async function patchDisLikesA(req, res) {
+  try {
+    const { user_id, id_a } = req.params;
+
+    const questArr = await patchDisLikesDbA(user_id, id_a);
+    console.log('user_id, id_a', user_id, id_a);
+    res.json(questArr);
+  } catch (error) {
+    console.log('error in getting Likes route ===', error);
+    res.sendStatus(500);
+  }
+}
+async function patchLikesPoDislikeA(req, res) {
+  try {
+    const { user_id, id_a } = req.params;
+
+    const questArr = await patchLikesPoDislikeDbA(user_id, id_a);
+    console.log('user_id, id_a', user_id, id_a);
+    res.json(questArr);
+  } catch (error) {
+    console.log('error in getting Likes route ===', error);
+    res.sendStatus(500);
+  }
+}
+async function patchDislikeLikeA(req, res) {
+  try {
+    const { user_id, id_a } = req.params;
+
+    const questArr = await patchDislikeLikeDbA(user_id, id_a);
+    console.log('user_id, id_a', user_id, id_a);
+    res.json(questArr);
+  } catch (error) {
+    console.log('error in getting Likes route ===', error);
+    res.sendStatus(500);
+  }
+}
 //-----------------------------
 module.exports = {
   getLikes,
@@ -73,4 +140,9 @@ module.exports = {
   patchLikesPoDislike,
   patchDisLikes,
   patchDislikeLike,
+  getLikesA,
+  patchLikesA,
+  patchLikesPoDislikeA,
+  patchDisLikesA,
+  patchDislikeLikeA,
 };

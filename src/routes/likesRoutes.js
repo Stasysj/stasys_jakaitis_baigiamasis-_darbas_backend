@@ -5,6 +5,11 @@ const {
   patchLikesPoDislike,
   patchDisLikes,
   patchDislikeLike,
+  getLikesA,
+  patchLikesPoDislikeA,
+  patchDislikeLikeA,
+  patchLikesA,
+  patchDisLikesA,
 } = require('../controller/likesControlles');
 const { validateToken } = require('../middleware');
 
@@ -23,16 +28,16 @@ likesRoutes.patch('/questions/likes/:user_id/:id_q', validateToken, patchLikes);
 
 likesRoutes.patch('/questions/likes/2/:user_id/:id_q', validateToken, patchDisLikes);
 
-//--------------------------------------------
-// likesRoutes.get('/answers/likes/:user_id/:id_a', getLikesA);
+// -------------------------------------------------------------------------Answers
+likesRoutes.get('/answers/likes/:user_id/:id_a', getLikesA);
 
-// likesRoutes.patch('/answers/likes/dislikes/:user_id/:id_a', validateToken, patchLikesPoDislikeA);
+likesRoutes.patch('/answers/likes/dislikes/:user_id/:id_a', validateToken, patchLikesPoDislikeA);
 
-// likesRoutes.patch('/answers/likes/2/dislikes/:user_id/:id_a', validateToken, patchDislikeLikeA);
+likesRoutes.patch('/answers/likes/2/dislikes/:user_id/:id_a', validateToken, patchDislikeLikeA);
 
-// likesRoutes.patch('/answers/likes/:user_id/:id_a', validateToken, patchLikesA);
+likesRoutes.patch('/answers/likes/:user_id/:id_a', validateToken, patchLikesA);
 
-// likesRoutes.patch('/answers/likes/2/:user_id/:id_a', validateToken, patchDisLikesA);
+likesRoutes.patch('/answers/likes/2/:user_id/:id_a', validateToken, patchDisLikesA);
 
 // -------------------------------------------
 module.exports = likesRoutes;
