@@ -24,6 +24,8 @@ questionsRoutes.get('/questions', getQuestions);
 
 questionsRoutes.post('/questions', validateToken, postQuestion);
 
+//--------------------
+
 questionsRoutes.patch('/questions/likes', validateToken, likeQuestion);
 
 questionsRoutes.patch('/questions/dislikes', validateToken, dislikeQuestion);
