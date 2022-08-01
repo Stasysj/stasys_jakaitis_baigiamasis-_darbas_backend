@@ -38,12 +38,14 @@ async function loginUser(req, res) {
   const gautasName = req.body.full_name;
   const gautasSlaptazodis = req.body.password;
   const foundUserArr = await findUserByEmail(gautasName, gautasEmail);
+  console.log('found user po radimo,', foundUserArr);
   const foundUser = foundUserArr[0];
-  const { user_id, full_name } = foundUser;
+
   if (!foundUser) {
     res.status(400).json('name, email or password not found ');
     return;
   }
+  const { user_id, full_name } = foundUser;
   if (!passWordsMatch(gautasSlaptazodis, foundUser.password)) {
     res.status(400).json('name, email or password not found ');
     return;
