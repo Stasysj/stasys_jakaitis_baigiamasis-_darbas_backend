@@ -72,7 +72,7 @@ async function patchDislikeLike(req, res) {
     res.sendStatus(500);
   }
 }
-//-------------------------------------------------------------------------------ANSWERS
+// -------------------------------------------------------------------------------ANSWERS
 async function getLikesA(req, res) {
   try {
     const { user_id, id_a } = req.params;
