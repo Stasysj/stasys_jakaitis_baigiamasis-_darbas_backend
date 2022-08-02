@@ -17,7 +17,7 @@ async function regUser(req, res) {
   try {
     const saveResult = await registerUserDB(full_name, email, newPassword);
     if (saveResult.affectedRows === 1) {
-      res.sendStatus(201);
+      res.status(201).json('user created');
       return;
     }
     res.status(400).json('no user created');
@@ -35,20 +35,24 @@ async function regUser(req, res) {
 //--------------------------------
 async function loginUser(req, res) {
   const gautasEmail = req.body.email;
+  const gautasName = req.body.full_name;
   const gautasSlaptazodis = req.body.password;
-  const foundUserArr = await findUserByEmail(gautasEmail);
+  const foundUserArr = await findUserByEmail(gautasName, gautasEmail);
   const foundUser = foundUserArr[0];
+
   if (!foundUser) {
-    res.status(400).json('email or password not found ');
+    res.status(400).json('name, email or password not found ');
     return;
   }
+  const { user_id, full_name } = foundUser;
   if (!passWordsMatch(gautasSlaptazodis, foundUser.password)) {
-    res.status(400).json('email or password not found ');
+    res.status(400).json('name, email or password not found ');
     return;
   }
   const payload = { userId: foundUser.id };
   const token = generateJwtToken(payload);
-  res.json({ success: true, token });
+  // eslint-disable-next-line object-curly-newline
+  res.json({ success: true, token, user_id, full_name });
 }
 // ------------------------------
 module.exports = {

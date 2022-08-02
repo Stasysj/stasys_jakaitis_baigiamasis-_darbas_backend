@@ -14,7 +14,7 @@ function passWordsMatch(enteredPass, storedHash) {
 function generateJwtToken(payload) {
   const jwtSecret = process.env.JWT_SECRET;
   if (!jwtSecret) throw new Error('generateJwtToken no secret');
-  return jwt.sign(payload, jwtSecret, { expiresIn: '1h' });
+  return jwt.sign(payload, jwtSecret, { expiresIn: '23h' });
 }
 // ------------------------------
 module.exports = {

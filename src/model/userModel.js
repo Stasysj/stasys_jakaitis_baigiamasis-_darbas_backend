@@ -27,14 +27,13 @@ function registerUserDB(full_name, email, password) {
   return executeDb(sql, [full_name, email, password]);
 }
 
-function findUserByEmail(email) {
-  const sql = 'SELECT * FROM users WHERE email = ?';
-  return executeDb(sql, [email]);
+function findUserByEmail(full_name, email) {
+  const sql = 'SELECT * FROM users WHERE full_name=? AND email = ?';
+  return executeDb(sql, [full_name, email]);
 }
 // ------------------
 
 module.exports = {
-  executeDb,
   getAllUsersDB,
   registerUserDB,
   findUserByEmail,
