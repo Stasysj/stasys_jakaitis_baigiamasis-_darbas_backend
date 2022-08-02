@@ -24,7 +24,7 @@ POST http://localhost:3001/api/login
 Content-Type: application/json
 
  {
-    "full_name": "marius233",
+    "full_name": "marius2",
     "email": "marius2@xxx.lt",
     "password": "123456"
     

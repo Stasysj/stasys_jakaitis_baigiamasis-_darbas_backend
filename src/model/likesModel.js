@@ -6,7 +6,6 @@ async function executeDb(sql, dataToDbArr) {
   try {
     conn = await mysql.createConnection(dbConfig);
     const [result] = await conn.execute(sql, dataToDbArr);
-    console.log('resultatas ish executeDb', result);
     return result;
   } catch (error) {
     console.log('error executeDb', error);
@@ -19,7 +18,6 @@ async function executeDb(sql, dataToDbArr) {
 // ---------------------------------------------------------------------------------
 function getLikesDb(user_id, id_q) {
   const sql = `SELECT * FROM likes WHERE  likes.id_q = ${id_q} `;
-  //   const sql = `SELECT * FROM likes WHERE likes.user_id = ${user_id} AND likes.id_q = ${id_q}`;
   return executeDb(sql, []);
 }
 function patchLikesDb(user_id, id_q) {
@@ -32,19 +30,17 @@ function patchDisLikesDb(user_id, id_q) {
 }
 function patchLikesPoDislikeDb(user_id, id_q) {
   const sql = `UPDATE likes SET  like_q = true WHERE likes.user_id=${user_id} AND likes.id_q = ${id_q}`;
-  //   const sql = `UPDATE questions SET title_q = (?), body_q = (?), edited_q = 1 WHERE questions.id_q = ${id_q}`;
 
   return executeDb(sql, []);
 }
 function patchDislikeLikeDb(user_id, id_q) {
   const sql = `UPDATE likes SET  like_q = false WHERE likes.user_id=${user_id} AND likes.id_q = ${id_q}`;
-  //   const sql = `UPDATE questions SET title_q = (?), body_q = (?), edited_q = 1 WHERE questions.id_q = ${id_q}`;
 
   return executeDb(sql, []);
 }
-// -----------------------------------------------------------------------------------------------ANSWERS LIKES
-// -------------------------------------------------------------------------------------------------------------
-function getLikesDbA(user_id, id_a) {
+// ------------------------------------------------------------------------------------ANSWERS LIKES
+// ------------------------------------------------------------------------------------------
+function getLikesDbA(id_a) {
   const sql = `SELECT * FROM likes2 WHERE  likes2.id_a = ${id_a} `;
   return executeDb(sql, []);
 }

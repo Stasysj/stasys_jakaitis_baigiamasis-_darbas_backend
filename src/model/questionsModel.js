@@ -6,7 +6,6 @@ async function executeDb(sql, dataToDbArr) {
   try {
     conn = await mysql.createConnection(dbConfig);
     const [result] = await conn.execute(sql, dataToDbArr);
-    console.log('resultatas ish executeDb', result);
     return result;
   } catch (error) {
     console.log('error executeDb', error);
@@ -30,18 +29,17 @@ function getQuestionsByUserIdDb(user_id) {
 }
 
 function postQuestionDb(title_q, body_q, user_id, add_time_q, add_time_mili_q) {
+  // eslint-disable-next-line operator-linebreak
   const sql =
     'INSERT INTO questions (title_q, body_q, user_id, add_time_q, add_time_mili_q) VALUES (?,?,?,?,?)';
   return executeDb(sql, [title_q, body_q, user_id, add_time_q, add_time_mili_q]);
 }
 
 function editQuestionDb(title_q, body_q, id_q) {
-  //   const sql = `UPDATE questions SET body_q = (?) WHERE questions.id_q = ${id_q}`;
   const sql = `UPDATE questions SET title_q = (?), body_q = (?), edited_q = 1 WHERE questions.id_q = ${id_q}`;
   return executeDb(sql, [title_q, body_q]);
 }
 function deleteQuestionDb(id_q) {
-  //   const sql = `UPDATE questions SET archived_q = 1 WHERE questions.id_q = ${id_q}`;
   const sql = `DELETE FROM questions  WHERE questions.id_q = ${id_q}`;
   return executeDb(sql, []);
 }
@@ -57,14 +55,7 @@ function dislikeQuestionDb(id_q) {
   const sql = `UPDATE questions SET like_q = like_q - 1  WHERE questions.id_q = ${id_q}`;
   return executeDb(sql, []);
 }
-// function counterDislikeQuestionDb(id_q, user_id) {
-//   const reik = 'z'.concat(user_id);
-//   //   const sql = `UPDATE questions SET likes_counter_q = likes_counter_q + ',${id_q}' WHERE questions.id_q = ${id_q}`;
-//   const sql = `UPDATE questions SET  likes_counter_q = CONCAT('${reik}',likes_counter_q ) WHERE questions.id_q = ${id_q}`;
-//   return executeDb(sql, []);
-// }
 module.exports = {
-  //   counterDislikeQuestionDb,
   addQuestionAnswersCountDb,
   getQuestionsByUserIdDb,
   getQuestionsByIdDb,

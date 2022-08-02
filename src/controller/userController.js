@@ -38,7 +38,6 @@ async function loginUser(req, res) {
   const gautasName = req.body.full_name;
   const gautasSlaptazodis = req.body.password;
   const foundUserArr = await findUserByEmail(gautasName, gautasEmail);
-  console.log('found user po radimo,', foundUserArr);
   const foundUser = foundUserArr[0];
 
   if (!foundUser) {
@@ -52,6 +51,7 @@ async function loginUser(req, res) {
   }
   const payload = { userId: foundUser.id };
   const token = generateJwtToken(payload);
+  // eslint-disable-next-line object-curly-newline
   res.json({ success: true, token, user_id, full_name });
 }
 // ------------------------------

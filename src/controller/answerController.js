@@ -46,9 +46,9 @@ async function getAnswerByAnswerId(req, res) {
 }
 
 async function postAnswers(req, res) {
+  // eslint-disable-next-line object-curly-newline
   const { user_id, body_a, add_time_a, add_time_mili_a } = req.body;
   const { id_q } = req.params;
-  console.log('id_q, body_a, user_id', id_q, body_a, user_id);
   try {
     const saveResult = await postAnswersDb(id_q, body_a, user_id, add_time_a, add_time_mili_a);
     if (saveResult.affectedRows === 1) {
@@ -65,12 +65,9 @@ async function postAnswers(req, res) {
 async function editAnswers(req, res) {
   const { body_a } = req.body;
   const { id_a } = req.params;
-  console.log('q_id', id_a);
-  console.log('req.body', req.body);
 
   try {
     const saveResult = await editAnswersDb(body_a, id_a);
-    console.log('resp', saveResult);
     if (saveResult.affectedRows === 1) {
       res.status(201).json('Answer successfully updated');
       return;
@@ -83,14 +80,10 @@ async function editAnswers(req, res) {
   }
 }
 async function deleteAnswers(req, res) {
-  //   const { body_q } = req.body;
   const { id_a } = req.params;
-  console.log('id_a', id_a);
-  //   console.log('req.body', req.body);
 
   try {
     const saveResult = await deleteAnswersDb(id_a);
-    console.log('resp', saveResult);
     if (saveResult.affectedRows === 1) {
       res.status(201).json('Answer successfully deleted');
       return;
@@ -103,14 +96,10 @@ async function deleteAnswers(req, res) {
   }
 }
 async function deleteAnswersByquestionId(req, res) {
-  //   const { body_q } = req.body;
   const { id_q } = req.params;
-  console.log('id_q', id_q);
-  //   console.log('req.body', req.body);
 
   try {
     const saveResult = await deleteAnswersByquestionIdDb(id_q);
-    console.log('resp', saveResult);
     if (saveResult.affectedRows === 1) {
       res.status(201).json('Answers successfully deleted');
       return;
@@ -127,7 +116,6 @@ async function likeAnswer(req, res) {
 
   try {
     const saveResult = await likeAnswersDb(id_a);
-    console.log('resp', saveResult);
     if (saveResult.affectedRows === 1) {
       res.status(201).json('Answer successfully liked');
       return;
@@ -144,7 +132,6 @@ async function dislikeAnswer(req, res) {
 
   try {
     const saveResult = await dislikeAnswersDb(id_a);
-    console.log('resp', saveResult);
     if (saveResult.affectedRows === 1) {
       res.status(201).json('Answer successfully disliked');
       return;

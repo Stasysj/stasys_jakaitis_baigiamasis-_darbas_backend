@@ -6,7 +6,6 @@ async function executeDb(sql, dataToDbArr) {
   try {
     conn = await mysql.createConnection(dbConfig);
     const [result] = await conn.execute(sql, dataToDbArr);
-    console.log('resultatas ish executeDb', result);
     return result;
   } catch (error) {
     console.log('error executeDb', error);
@@ -30,6 +29,7 @@ function getAnswerByAnswerIddDb(id_a) {
 }
 
 function postAnswersDb(id_q, body_a, user_id, add_time_a, add_time_mili_a) {
+  // eslint-disable-next-line operator-linebreak
   const sql =
     'INSERT INTO answers (id_q, body_a, user_id,add_time_a, add_time_mili_a) VALUES (?,?,?,?,?)';
   return executeDb(sql, [id_q, body_a, user_id, add_time_a, add_time_mili_a]);

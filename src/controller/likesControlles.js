@@ -17,7 +17,6 @@ async function getLikes(req, res) {
     const { user_id, id_q } = req.params;
 
     const questArr = await getLikesDb(user_id, id_q);
-    console.log('user_id, id_q', user_id, id_q);
     res.json(questArr);
   } catch (error) {
     console.log('error in getting Likes route ===', error);
@@ -27,9 +26,7 @@ async function getLikes(req, res) {
 async function patchLikes(req, res) {
   try {
     const { user_id, id_q } = req.params;
-
     const questArr = await patchLikesDb(user_id, id_q);
-    console.log('user_id, id_q', user_id, id_q);
     res.json(questArr);
   } catch (error) {
     console.log('error in getting Likes route ===', error);
@@ -39,9 +36,7 @@ async function patchLikes(req, res) {
 async function patchDisLikes(req, res) {
   try {
     const { user_id, id_q } = req.params;
-
     const questArr = await patchDisLikesDb(user_id, id_q);
-    console.log('user_id, id_q', user_id, id_q);
     res.json(questArr);
   } catch (error) {
     console.log('error in getting Likes route ===', error);
@@ -53,7 +48,6 @@ async function patchLikesPoDislike(req, res) {
     const { user_id, id_q } = req.params;
 
     const questArr = await patchLikesPoDislikeDb(user_id, id_q);
-    console.log('user_id, id_q', user_id, id_q);
     res.json(questArr);
   } catch (error) {
     console.log('error in getting Likes route ===', error);
@@ -65,7 +59,6 @@ async function patchDislikeLike(req, res) {
     const { user_id, id_q } = req.params;
 
     const questArr = await patchDislikeLikeDb(user_id, id_q);
-    console.log('user_id, id_q', user_id, id_q);
     res.json(questArr);
   } catch (error) {
     console.log('error in getting Likes route ===', error);
@@ -78,7 +71,6 @@ async function getLikesA(req, res) {
     const { user_id, id_a } = req.params;
 
     const questArr = await getLikesDbA(user_id, id_a);
-    console.log('user_id, id_a', user_id, id_a);
     res.json(questArr);
   } catch (error) {
     console.log('error in getting Likes route ===', error);
@@ -90,7 +82,6 @@ async function patchLikesA(req, res) {
     const { user_id, id_a } = req.params;
 
     const questArr = await patchLikesDbA(user_id, id_a);
-    console.log('user_id, id_a', user_id, id_a);
     res.json(questArr);
   } catch (error) {
     console.log('error in getting Likes route ===', error);
@@ -102,7 +93,6 @@ async function patchDisLikesA(req, res) {
     const { user_id, id_a } = req.params;
 
     const questArr = await patchDisLikesDbA(user_id, id_a);
-    console.log('user_id, id_a', user_id, id_a);
     res.json(questArr);
   } catch (error) {
     console.log('error in getting Likes route ===', error);
@@ -114,7 +104,6 @@ async function patchLikesPoDislikeA(req, res) {
     const { user_id, id_a } = req.params;
 
     const questArr = await patchLikesPoDislikeDbA(user_id, id_a);
-    console.log('user_id, id_a', user_id, id_a);
     res.json(questArr);
   } catch (error) {
     console.log('error in getting Likes route ===', error);
@@ -126,7 +115,6 @@ async function patchDislikeLikeA(req, res) {
     const { user_id, id_a } = req.params;
 
     const questArr = await patchDislikeLikeDbA(user_id, id_a);
-    console.log('user_id, id_a', user_id, id_a);
     res.json(questArr);
   } catch (error) {
     console.log('error in getting Likes route ===', error);
